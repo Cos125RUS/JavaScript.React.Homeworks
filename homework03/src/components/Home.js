@@ -1,5 +1,5 @@
 import React, {Suspense} from "react";
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 export default function Home() {
@@ -11,6 +11,7 @@ export default function Home() {
                     <Link className="link" to="conversion">Conversion (Task01)</Link>
                     <Link className="link" to="todolist">TodoList (Task02)</Link>
                 </nav>
+                <Outlet/>
             </div>
         </Suspense>
     );
