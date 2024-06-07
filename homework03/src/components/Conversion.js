@@ -1,7 +1,7 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import {Suspense, useState} from "react";
-import {number} from "prop-types";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 export default function Conversion() {
     const [valueC, setValueC] = useState(0);
@@ -32,7 +32,7 @@ export default function Conversion() {
     }
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ClimbingBoxLoader/>}>
             <div>
                 <h1>Conversion</h1>
                 <p style={{display: 'flex', justifyContent: 'center', alignItems: 'end', gap: '20vw'}}>

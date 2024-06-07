@@ -2,6 +2,7 @@ import React, {Suspense, useState} from "react";
 import TextField from "@mui/material/TextField";
 import {Box, Button, IconButton, List, ListItem, ListItemText} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 /**
  * Список дел
@@ -33,7 +34,7 @@ export default function TodoList() {
     }
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ClimbingBoxLoader/>}>
             <>
                 <h1>TodoList</h1>
                 <Box className="todo-box">
