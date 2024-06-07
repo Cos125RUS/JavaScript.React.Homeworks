@@ -14,7 +14,13 @@ export default function Conversion() {
      */
     const CelsiusToFahrenheit = (e) => {
         if (!isNaN(e.target.value)) {
-            setValueC(e.target.value);
+            if (e.target.value[0] === '0') {
+                const [...arr] = e.target.value;
+                arr.shift();
+                setValueC(arr.join(''));
+            } else {
+                setValueC(e.target.value);
+            }
             setValueF(Math.round((9 / 5 * e.target.value + 32) * 100) / 100);
         }
     }
@@ -25,8 +31,14 @@ export default function Conversion() {
      * @constructor
      */
     const FahrenheitToCelsius = (e) => {
-        if(!isNaN(e.target.value)) {
-            setValueF(e.target.value);
+        if (!isNaN(e.target.value)) {
+            if (e.target.value[0] === '0') {
+                const [...arr] = e.target.value;
+                arr.shift();
+                setValueF(arr.join(''));
+            } else {
+                setValueF(e.target.value);
+            }
             setValueC(Math.round(5 / 9 * (e.target.value - 32) * 100) / 100);
         }
     }
