@@ -1,6 +1,7 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
-import {useState} from "react";
+import {Suspense, useState} from "react";
+import {number} from "prop-types";
 
 export default function Conversion() {
     const [valueC, setValueC] = useState(0);
@@ -12,8 +13,10 @@ export default function Conversion() {
      * @constructor
      */
     const CelsiusToFahrenheit = (e) => {
-        setValueC(e.target.value);
-        setValueF(Math.round((9 / 5 * e.target.value + 32) * 100) / 100);
+        if (!isNaN(e.target.value)) {
+            setValueC(e.target.value);
+            setValueF(Math.round((9 / 5 * e.target.value + 32) * 100) / 100);
+        }
     }
 
     /**
@@ -22,17 +25,23 @@ export default function Conversion() {
      * @constructor
      */
     const FahrenheitToCelsius = (e) => {
-      setValueF(e.target.value);
-      setValueC(Math.round(5/9 * (e.target.value - 32) * 100) / 100);
+        if(!isNaN(e.target.value)) {
+            setValueF(e.target.value);
+            setValueC(Math.round(5 / 9 * (e.target.value - 32) * 100) / 100);
+        }
     }
 
     return (
-        <div>
-            <h1>Conversion</h1>
-            <p style={{display: 'flex', justifyContent: 'center', alignItems: 'end', gap: '20vw'}}>
-                <TextField id="standard-basic" label="C" variant="standard" value={valueC} onChange={CelsiusToFahrenheit}/>
-                <TextField id="standard-basic" label="F" variant="standard" value={valueF} onChange={FahrenheitToCelsius}/>
-            </p>
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+            <div>
+                <h1>Conversion</h1>
+                <p style={{display: 'flex', justifyContent: 'center', alignItems: 'end', gap: '20vw'}}>
+                    <TextField id="standard-basic" label="C" variant="standard" value={valueC}
+                               onChange={CelsiusToFahrenheit}/>
+                    <TextField id="standard-basic" label="F" variant="standard" value={valueF}
+                               onChange={FahrenheitToCelsius}/>
+                </p>
+            </div>
+        </Suspense>
     );
 }

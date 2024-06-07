@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {Suspense, useState} from "react";
 import TextField from "@mui/material/TextField";
 import {Box, Button, IconButton, List, ListItem, ListItemText} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -33,22 +33,24 @@ export default function TodoList() {
     }
 
     return (
-        <>
-            <h1>TodoList</h1>
-            <Box className="todo-box">
-                <TextField id="filled-basic" variant="filled" type="text" value={input}
-                           onChange={(e) => setInput(e.target.value)}/>
-                <Button variant="contained" onClick={addToList}>Add</Button>
-            </Box>
-            <List className="todo-list">
-                {list.map((item, index) =>
-                    <ListItem key={index} className="todo-item">
-                        <ListItemText primary={item}/>
-                        <IconButton aria-label="delete" onClick={() => deleteFromList(item)}>
-                            <DeleteIcon/>
-                        </IconButton>
-                    </ListItem>)}
-            </List>
-        </>
+        <Suspense fallback={<div>Loading...</div>}>
+            <>
+                <h1>TodoList</h1>
+                <Box className="todo-box">
+                    <TextField id="filled-basic" variant="filled" type="text" value={input}
+                               onChange={(e) => setInput(e.target.value)}/>
+                    <Button variant="contained" onClick={addToList}>Add</Button>
+                </Box>
+                <List className="todo-list">
+                    {list.map((item, index) =>
+                        <ListItem key={index} className="todo-item">
+                            <ListItemText primary={item}/>
+                            <IconButton aria-label="delete" onClick={() => deleteFromList(item)}>
+                                <DeleteIcon/>
+                            </IconButton>
+                        </ListItem>)}
+                </List>
+            </>
+        </Suspense>
     );
 }
