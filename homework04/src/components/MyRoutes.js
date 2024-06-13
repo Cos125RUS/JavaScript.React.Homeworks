@@ -10,7 +10,7 @@ export default function MyRoutes() {
             element: <Header/>,
             children: [
                 {path: "/", element: <HomePage/>},
-                {path: "/aboutus", element: <AboutPage/>},
+                {path: "/about", element: <AboutPage/>},
             ],
         }
     ]);
