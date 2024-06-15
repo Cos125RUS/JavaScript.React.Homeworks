@@ -1,12 +1,12 @@
 import {useSelector} from "react-redux";
 import "./ThemeContainer.css";
 
-const ThemeContainer = (props, {children}) => {
+const ThemeContainer = (props) => {
     const theme = useSelector((state) => state.theme.value);
 
     return (
         <div {...props} className={theme}>
-            {children}
+            {props.children}
         </div>
     );
 }
