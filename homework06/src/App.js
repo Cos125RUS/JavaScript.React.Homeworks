@@ -1,14 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import ProductsProvider from "./components/ProductsProvider";
-import ProductList from "./components/ProductList";
-import AddProduct from "./components/AddProduct";
+import ProductRouter from "./components/ProductRouter";
 
 function App() {
     return (
         <ProductsProvider>
-            <AddProduct/>
-            <ProductList/>
+            <ProductRouter/>
         </ProductsProvider>
     );
 }

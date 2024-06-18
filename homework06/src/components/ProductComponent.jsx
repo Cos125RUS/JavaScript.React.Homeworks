@@ -33,6 +33,7 @@ const ProductComponent = ({product}) => {
                 )}
                 <button onClick={() => switchAvailable()}>switch</button>
             </div>
+            <a href={`/edit/${product.id}`}>Edit</a>
         </div>
     );
 };

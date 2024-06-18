@@ -1,5 +1,4 @@
-import {useDispatch, useSelector} from "react-redux";
-import {updateProduct} from "../reducers/productSlice";
+import {useSelector} from "react-redux";
 import ProductComponent from "./ProductComponent";
 
 /**
@@ -8,7 +7,7 @@ import ProductComponent from "./ProductComponent";
  * @returns {JSX.Element}
  * @constructor
  */
-const ProductList = (props) => {
+const ProductList = () => {
     const products = useSelector(state => state.product.productList);
 
     return (

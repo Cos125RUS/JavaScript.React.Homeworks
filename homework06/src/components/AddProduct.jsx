@@ -3,6 +3,12 @@ import {useDispatch} from "react-redux";
 import {addProduct, updateProduct} from "../reducers/productSlice";
 import Product from "../entity/product";
 
+/**
+ * Компонент для добавления/обновления продуктов
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const AddProduct = (props) => {
     // Достаём продукт из пропсов, остальное упаковываем
     const {product, ...otherProps} = props;
