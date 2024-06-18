@@ -1,6 +1,7 @@
 import {useDispatch} from "react-redux";
 import {useState} from "react";
-import {updateProduct} from "../reducers/productSlice";
+import {removeProduct, updateProduct} from "../reducers/productSlice";
+import {Link} from "react-router-dom";
 
 /**
  * Компонент, отображающий карточку товара
@@ -20,10 +21,14 @@ const ProductComponent = ({product}) => {
         dispatch(updateProduct(product));
     };
 
+    const deleteProduct = () => {
+        dispatch(removeProduct(product.id));
+    };
+
     return (
         <div className="product">
             <h3 className="product-name">{product.name}</h3>
-            <p>{product.description}</p>
+            <p className="product-description">{product.description}</p>
             <p>{product.price}</p>
             <div className="product-available">
                 {availableProduct ? (
@@ -33,7 +38,10 @@ const ProductComponent = ({product}) => {
                 )}
                 <button onClick={() => switchAvailable()}>switch</button>
             </div>
-            <a href={`/edit/${product.id}`}>Edit</a>
+            <div className="product-buttons">
+                <Link to={`/edit/${product.id}`}>Edit</Link>
+                <button onClick={deleteProduct}>Delete</button>
+            </div>
         </div>
     );
 };

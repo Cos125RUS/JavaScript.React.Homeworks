@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
  * @returns {function(*): *}
  */
 const editProduct = () => {
-    return (props) => {
+    return () => {
         // Получение id из параметров пути
         const {id} = useParams();
         // Получение списка товаров

@@ -8,7 +8,7 @@ import {Link, Outlet} from "react-router-dom";
 const Header = () => {
     return (
         <>
-            <header>
+            <header className="header-nav">
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/add">Add</Link></li>
