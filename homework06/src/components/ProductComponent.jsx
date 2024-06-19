@@ -29,18 +29,18 @@ const ProductComponent = ({product}) => {
         <div className="product">
             <h3 className="product-name">{product.name}</h3>
             <p className="product-description">{product.description}</p>
-            <p>{product.price}</p>
+            <p>$ {product.price}</p>
             <div className="product-available">
                 {availableProduct ? (
-                    <p>Available</p>
+                    <p style={{color: "blue"}}>Available</p>
                 ) : (
-                    <p>Not Available</p>
+                    <p style={{color: "red"}}>Not Available</p>
                 )}
                 <button onClick={() => switchAvailable()}>switch</button>
             </div>
             <div className="product-buttons">
-                <Link to={`/edit/${product.id}`}>Edit</Link>
-                <button onClick={deleteProduct}>Delete</button>
+                <Link to={`/edit/${product.id}`}>edit</Link>
+                <button onClick={deleteProduct}>delete</button>
             </div>
         </div>
     );

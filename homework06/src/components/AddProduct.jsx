@@ -26,7 +26,7 @@ const AddProduct = (props) => {
     const completeEnter = (e) => {
         // Прерываем отправку формы
         e.preventDefault();
-        //TODO: Добавить проверку на отрицательную цену и пустые поля ввода
+        //TODO: Добавить проверку на нулевую цену и пустые поля ввода
 
         // Проверка существования продукта
         if (product) {
@@ -45,11 +45,29 @@ const AddProduct = (props) => {
         setName('');
         setDescription('');
         setPrice(0);
+        // Запускаем callback на 2 секунды с последующим переходом на главную страницу
+        setTimeout(() => {
+            const homeLink = document.querySelector('.home-link');
+            homeLink.click();
+        }, 2000);
+    };
+
+    /**
+     * Функция ввода стоимости товара
+     * @param e
+     */
+    const writePrice = (e) => {
+        // Убираем первый ноль
+        if (price === 0) {
+            e.target.value = e.target.value[1];
+        }
+        // Обновляем значение
+        setPrice(parseInt(e.target.value))
     };
 
     return (
         <>
-            <form onSubmit={completeEnter} {...otherProps}>
+            <form className="add-form" onSubmit={completeEnter} {...otherProps}>
                 <input type="text"
                        placeholder="Product Name"
                        value={name}
@@ -62,11 +80,11 @@ const AddProduct = (props) => {
                     Price
                     <input type="number"
                            value={price}
-                           onChange={e => setPrice(parseInt(e.target.value))}/>
+                           onChange={writePrice}/>
                 </label>
                 <button>Complete</button>
             </form>
-            <div>{complete}</div>
+            <div className="complete">{complete}</div>
         </>
     );
 };

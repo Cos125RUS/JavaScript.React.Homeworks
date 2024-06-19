@@ -2,14 +2,20 @@ import ProductList from "../../components/ProductList";
 import {render, screen} from "@testing-library/react";
 import productStore from "../../store/productStore";
 import {Provider} from "react-redux";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
+const renderedComponent = () => render(
+    <Provider store={productStore}>
+        <Router>
+            <Routes>
+                <Route path="/" element={<ProductList />} />
+            </Routes>
+        </Router>
+    </Provider>
+);
 describe("ProductList Component tests", () => {
     test("render product list test", () => {
-        render(
-            <Provider store={productStore}>
-                <ProductList/>
-            </Provider>
-        );
+        renderedComponent();
         // eslint-disable-next-line testing-library/no-node-access
         const productsEl = document.querySelector(".products");
         // eslint-disable-next-line testing-library/no-node-access
@@ -22,11 +28,7 @@ describe("ProductList Component tests", () => {
     });
 
     test("render products content test", () => {
-        render(
-            <Provider store={productStore}>
-                <ProductList/>
-            </Provider>
-        );
+        renderedComponent();
         // eslint-disable-next-line testing-library/await-async-query
         expect(screen.getByText("iPhone")).toBeInTheDocument();
         expect(screen.getByText("Samsung")).toBeInTheDocument();

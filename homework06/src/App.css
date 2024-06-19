@@ -11,6 +11,11 @@ li {
     list-style: none;
 }
 
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .header-nav > ul {
     padding: 5px 0 5px 15px;
     display: flex;
@@ -24,6 +29,7 @@ li {
 
 .products {
     margin-top: 50px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -61,11 +67,46 @@ li {
     gap: 50px;
 }
 
-.product-buttons > *, .product-available > button {
+.product-buttons > *, .product-available > button, .add-form > button {
     border: 0;
     background-color: cornflowerblue;
     color: wheat;
     padding: 3px 8px;
     border-radius: 11px;
     cursor: pointer;
+}
+
+.add-form {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.add-form input {
+    border: 0 !important;
+    border-style: none;
+    background-color: wheat;
+    padding: 5px 10px;
+}
+
+.add-form input:focus {
+    outline: 2px solid cornflowerblue;
+}
+
+.add-form label {
+    color: cornflowerblue;
+}
+
+.add-form > label > input {
+    margin-left: 10px;
+    padding-left: 15px;
+}
+
+.complete {
+    color: cornflowerblue;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
 }
