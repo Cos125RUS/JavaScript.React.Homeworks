@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {addTask, switchCompleted} from "../modules/taskSlice";
 
 const TaskList = () => {
@@ -7,9 +7,13 @@ const TaskList = () => {
     const tasks = useSelector(state => state.tasks);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch({type: 'USER_DATA_LOADING'});
+    }, []);
+
     return (
         <div>
-            <button onClick={() => dispatch({type: 'USER_DATA_LOADING'})}>load tasks</button>
+            {/*<button onClick={() => dispatch({type: 'USER_DATA_LOADING'})}>load tasks</button>*/}
             <ul>
                 {tasks.map((task) => (
                     <li key={task.id}

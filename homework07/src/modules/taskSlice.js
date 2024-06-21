@@ -14,8 +14,6 @@ const taskSlice = createSlice({
             state.tasks.push(action.payload);
         },
         switchCompleted: (state, action) => {
-            console.log(action.payload);
-            state.tasks.forEach(console.log);
             state.tasks.forEach((task) => {
                 if (task.id === action.payload) {
                     task.completed = !task.completed;
