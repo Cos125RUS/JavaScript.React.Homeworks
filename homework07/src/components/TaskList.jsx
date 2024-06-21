@@ -15,7 +15,6 @@ const TaskList = () => {
 
     return (
         <div>
-            {/*<button onClick={() => dispatch({type: 'USER_DATA_LOADING'})}>load tasks</button>*/}
             <ul>
                 {tasks.map((task) => (
                     <li key={task.id}
