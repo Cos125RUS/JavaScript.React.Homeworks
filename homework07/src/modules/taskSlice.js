@@ -1,9 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {tasksLoader} from "./tasksLoader";
 
 const taskSlice = createSlice({
     name: "task",
     initialState: {
-        tasks: []
+        tasks: [],
+        loading: false
     },
     reducers: {
         addTask: (state, action) => {
@@ -20,7 +22,20 @@ const taskSlice = createSlice({
                 }
             });
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(tasksLoader.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(tasksLoader.fulfilled, (state, {payload}) => {
+                state.loading = false
+                state.tasks = payload
+            })
+            .addCase(tasksLoader.rejected, (state) => {
+                state.loading = false
+            })
+    },
 });
 
 export const {switchCompleted, addTask, loadTask} = taskSlice.actions;

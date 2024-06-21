@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {addTask, switchCompleted} from "../modules/taskSlice";
+import {tasksLoader} from "../modules/tasksLoader";
 
 const TaskList = () => {
     const [inputValue, setInputValue] = useState('');
@@ -8,7 +9,8 @@ const TaskList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch({type: 'USER_DATA_LOADING'});
+        // dispatch({type: 'USER_DATA_LOADING'});
+        dispatch(tasksLoader());
     }, []);
 
     return (
