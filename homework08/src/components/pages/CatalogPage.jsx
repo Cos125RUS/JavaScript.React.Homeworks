@@ -1,5 +1,5 @@
 import CatalogMain from "./catalog/CatalogMain";
-import Advantages from "./index/Advantages";
+import Advantages from "./other/Advantages";
 
 const CatalogPage = () => {
 

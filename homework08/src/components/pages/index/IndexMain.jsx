@@ -1,49 +1,11 @@
 import {Link} from "react-router-dom";
+import OfferBox from "./main/OfferBox";
 
 const IndexMain = () => {
     
     return (
         <main className="main">
-            <section className="offer">
-                <div className="offer__content center">
-                    <Link to="#">
-                        <div className="offer__card">
-                            <img src="img/offer/1.jpg" alt="photo" className="offer__img"/>
-                                <img src="img/offer/rectangle_small.png" alt="rectangle" className="offer__rectangle"/>
-                                    <div className="offer__text">
-                                        <h3 className="offer__title">30% OFF<br/><b>FOR WOMEN</b></h3>
-                                    </div>
-                        </div>
-                    </Link>
-                    <Link to="catalog">
-                        <div className="offer__card">
-                            <img src="img/offer/2.jpg" alt="photo" className="offer__img"/>
-                                <img src="img/offer/rectangle_small.png" alt="rectangle" className="offer__rectangle"/>
-                                    <div className="offer__text">
-                                        <h3 className="offer__title">HOT DEAL<br/><b>FOR MEN</b></h3>
-                                    </div>
-                        </div>
-                    </Link>
-                    <Link to="#">
-                        <div className="offer__card">
-                            <img src="img/offer/3.jpg" alt="photo" className="offer__img"/>
-                                <img src="img/offer/rectangle_small.png" alt="rectangle" className="offer__rectangle"/>
-                                    <div className="offer__text">
-                                        <h3 className="offer__title">NEW ARRIVALS<br/><b>FOR KIDS</b></h3>
-                                    </div>
-                        </div>
-                    </Link>
-                    <Link to="#" className="offer__bottom">
-                        <div className="offer__card offer__big">
-                            <img src="img/offer/4.jpg" alt="photo" className="offer__img"/>
-                                <img src="img/offer/rectangle_big.png" alt="rectangle" className="offer__rectangle"/>
-                                    <div className="offer__text">
-                                        <h3 className="offer__title">LUXIROUS & TRENDY<br/><b>ACCESORIES</b></h3>
-                                    </div>
-                        </div>
-                    </Link>
-                </div>
-            </section>
+            <OfferBox/>
             <section className="products">
                 <div className="product__content center">
                     <div className="product__head">

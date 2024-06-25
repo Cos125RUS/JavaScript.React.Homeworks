@@ -227,7 +227,7 @@ textarea {
   position: relative;
 }
 .header .basket__link::after {
-  content: "5";
+  content: "";
   color: #FFF;
   font-size: 12px;
   font-weight: 400;

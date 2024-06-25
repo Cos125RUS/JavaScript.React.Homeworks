@@ -116,7 +116,7 @@
         position: relative;
 
         &::after {
-            content: '5';
+            content: '';
             @include text(#FFF, 12px, 400);
             width: 19px;
             height: 19px;

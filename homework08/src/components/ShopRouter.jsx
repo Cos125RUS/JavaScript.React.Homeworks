@@ -1,5 +1,4 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import Header from "./pages/main/Header";
 import IndexPage from "./pages/indexPage";
 import Main from "./pages/Main";
 import CatalogPage from "./pages/CatalogPage";
