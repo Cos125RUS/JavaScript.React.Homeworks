@@ -4,8 +4,7 @@ import {offerLoader} from "./loaders/offerLoader";
 import productsLoader from "./loaders/productsLoader";
 import advantagesLoader from "./loaders/advantagesLoader";
 import filterLoader from "./loaders/filterLoader";
-import {trendingNowData} from "../data/filter/trendingNowData";
-import trendingNowLoader from "./loaders/trendingNowLoader";
+import catalogProductLoader from "./loaders/catalogProductLoader";
 
 const shopSlice = createSlice({
     name: "shop",
@@ -15,8 +14,8 @@ const shopSlice = createSlice({
         offers: [],
         products: [],
         advantages: [],
-        filter: [],
-        trendingNow: [],
+        filter: {},
+        catalogProducts: [],
     },
     reducers: {
         addToCart: (state, action) => {
@@ -40,8 +39,8 @@ const shopSlice = createSlice({
             .addCase(filterLoader.fulfilled, (state, {payload}) => {
                 state.filter = payload;
             })
-            .addCase(trendingNowLoader.fulfilled, (state, {payload}) => {
-                state.trendingNow = payload;
+            .addCase(catalogProductLoader.fulfilled, (state, {payload}) => {
+                state.catalogProducts = payload;
             })
     }
 });

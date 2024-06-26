@@ -10,7 +10,7 @@ const TrendingNow = ({trendingNow}) => {
                 className="catalog_page__filter_sort__box__options__all_options__option__list trending_now_frame"
                 action="#">
                 <ol>
-                    {trendingNow.map((item, i) => (
+                    {trendingNow && trendingNow.map((item, i) => (
                         <li key={i}>
                             <input type="checkbox" name="new" id={item.name}
                                    className="options_checkbox"/>

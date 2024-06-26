@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {offerData} from "../../data/oferData";
+import {offerData} from "../../data/offerData";
 
 export const offerLoader = createAsyncThunk(
     'shop/offer/offerLoader', async () => {

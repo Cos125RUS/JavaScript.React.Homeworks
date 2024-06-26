@@ -1,4 +1,4 @@
-import {filterData} from "../../data/filter/filterData";
+import {filterData} from "../../data/filterData";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 
 const filterLoader = createAsyncThunk(
