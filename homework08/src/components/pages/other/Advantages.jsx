@@ -1,36 +1,27 @@
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import advantagesLoader from "../../../reducers/loaders/advantagesLoader";
 
 const Advantages = () => {
+    const advantages = useSelector((state) => state.advantages);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(advantagesLoader());
+    }, []);
     
     return (
         <div className="advantages">
-            <article className="advantage">
-                <Link to="#" className="advantage__link">
-                    <img src="img/advantagees/1.svg" alt="icon" className="advantage_img"/>
-                        <h3>Free Delivery</h3>
-                        <p>Worldwide delivery on all. Authorit tively morph <br/>next-generation innov tion with
-                            extensive
-                            models.</p>
-                </Link>
-            </article>
-            <article className="advantage">
-                <Link to="#" className="advantage__link">
-                    <img src="img/advantagees/2.svg" alt="icon" className="advantage_img"/>
-                        <h3>Sales & discounts</h3>
-                        <p>Worldwide delivery on all. Authorit tively morph <br/>next-generation innov tion with
-                            extensive
-                            models.</p>
-                </Link>
-            </article>
-            <article className="advantage">
-                <Link to="#" className="advantage__link">
-                    <img src="img/advantagees/3.svg" alt="icon" className="advantage_img"/>
-                        <h3>Quality assurance</h3>
-                        <p>Worldwide delivery on all. Authorit tively morph <br/>next-generation innov tion with
-                            extensive
-                            models.</p>
-                </Link>
-            </article>
+            {advantages.map((advantage, index) => (
+                <article key={index} className="advantage">
+                    <Link to="#" className="advantage__link">
+                        <img src={`img/advantagees/${advantage.img}`} alt="icon" className="advantage_img"/>
+                        <h3>{advantage.title}</h3>
+                        <p>{advantage.description[0]}<br/>{advantage.description[1]}</p>
+                    </Link>
+                </article>
+            ))}
         </div>
     );
 };

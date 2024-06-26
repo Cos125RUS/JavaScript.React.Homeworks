@@ -1,0 +1,33 @@
+import {Link} from "react-router-dom";
+import ProductTop from "./ProductTop";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import productsLoader from "../../../../reducers/loaders/productsLoader";
+import Product from "./Product";
+
+const ProductBox = () => {
+    const products = useSelector(state => state.products);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(productsLoader());
+    }, []);
+
+    return (
+        <section className="products">
+            <div className="product__content center">
+                <ProductTop/>
+                <div className="product__items">
+                    {products.map((product, index) => (
+                        <Product key={product.id} product={product}/>
+                    ))}
+                </div>
+                <div className="product__bottom">
+                    <Link to="#" className="product__browse__all">Browse All Product</Link>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default ProductBox;
