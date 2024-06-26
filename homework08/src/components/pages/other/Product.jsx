@@ -1,4 +1,4 @@
-import AddToCart from "./AddToCart";
+import AddToCart from "../index/elements/AddToCart";
 
 const Product = ({product}) => {
     const photo = `img/products/${product.photo}`;

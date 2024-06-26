@@ -1,15 +1,10 @@
+import SubNav from "../other/SubNav";
 
 const CartMain = () => {
     
     return (
         <main className="main">
-            <section className="sub_nav">
-                <div className="sub_nav__content center">
-                    <div className="sub_nav__content__left">
-                        <h1>SHOPPING CART</h1>
-                    </div>
-                </div>
-            </section>
+            <SubNav crumbs={[{name: "shopping cart"}]}/>
             <section className="cart center">
                 <div className="cart__box">
                     <div className="cart__box__left">

@@ -3,7 +3,7 @@ import ProductTop from "./ProductTop";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import productsLoader from "../../../../reducers/loaders/productsLoader";
-import Product from "./Product";
+import Product from "../../other/Product";
 
 const ProductBox = () => {
     const products = useSelector(state => state.products);

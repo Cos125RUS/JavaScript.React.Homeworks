@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import catalogProductLoader from "../../../../reducers/loaders/catalogProductLoader";
-import Product from "../../index/elements/Product";
+import Product from "../../other/Product";
 import CatalogProductItem from "./CatalogProductItem";
 
 const CatalogProducts = () => {
