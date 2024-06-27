@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import Product from "../../other/Product";
 import productsLoader from "../../../../reducers/loaders/productsLoader";
 import {useLocation} from "react-router-dom";
@@ -8,9 +8,9 @@ const CatalogProducts = ({category}) => {
     const products = useSelector(state => state.products);
     const dispatch = useDispatch();
     const location = useLocation();
-    let year = null;
-    let size = null;
-    let price = null;
+    const [year, setYear] = useState(null);
+    const [size, setSize] = useState(null);
+    const [price, setPrice] = useState(null);
 
     useEffect(() => {
         dispatch(productsLoader());
@@ -18,20 +18,38 @@ const CatalogProducts = ({category}) => {
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
-        year = query.get("year");
-        size = query.get("size");
-        price = query.get("price");
-        console.log(year, size, price);
+        setYear(query.get("year"));
+        setSize(query.get("size"));
+        setPrice(query.get("price"));
     }, [location]);
 
     return (
         <div className="catalog_page__list">
             <div className="product__items">
                 {products.filter(product => ((product.category === category)
-                    // && (year && (product.year === parseInt(year)))
-                    // && (size && (product.size === size))
-                    // && (price && (price.price === price))
-                    )).map((product, index) => (
+                    ))
+                    .filter(product => {
+                        if (!year) {
+                            return product;
+                        } else if (product.year === parseInt(year)) {
+                            return product;
+                        }
+                    })
+                    // .filter(product => {
+                    //     if (!size) {
+                    //         return product;
+                    //     } else if (product.size === size) {
+                    //         return product;
+                    //     }
+                    // })
+                    // .filter(product => {
+                    //     if (!price) {
+                    //         return product;
+                    //     } else if (product.price === price) {
+                    //         return product;
+                    //     }
+                    // })
+                    .map((product, index) => (
                     <Product key={product.id} product={product}/>
                 ))}
             </div>
