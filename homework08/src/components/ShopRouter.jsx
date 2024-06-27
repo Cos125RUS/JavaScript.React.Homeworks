@@ -13,9 +13,9 @@ const ShopRouter = () => {
             <Routes>
                 <Route path="/" element={<Main/>}>
                     <Route path="/" element={<IndexPage/>}/>
-                    <Route path="catalog" element={<CatalogPage/>}>
-                        <Route path="/catalog/:category" element={<CatalogPage/>}>
-                            <Route path="/catalog/:category/:pageNumber" element={<CatalogPage/>}/>
+                    <Route path="/catalog" element={<CatalogPage/>}>
+                        <Route path=":category" element={<CatalogPage/>}>
+                            <Route path=":pageNumber" element={<CatalogPage/>}/>
                         </Route>
                     </Route>
                     <Route path="product" element={<ProductPage/>}/>

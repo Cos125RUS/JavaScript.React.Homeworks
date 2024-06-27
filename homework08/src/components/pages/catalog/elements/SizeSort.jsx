@@ -1,6 +1,18 @@
+import {useLocation, useNavigate} from "react-router-dom";
 
 const SizeSort = ({size}) => {
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    const selectHandler = (e) => {
+        let search = '';
+        if (location.search) {
+            search = location.search + `&size=${e.target.id}`;
+        } else {
+            search = `?size=${e.target.id}`;
+        }
+        navigate(location.pathname+`${search}`);
+    }
     return (
         <details
             className="info__box__options__box__option catalog_page__filter_sort__box__options__all_options__option">
@@ -11,7 +23,8 @@ const SizeSort = ({size}) => {
                 <ol>
                     {size && size.map((size, index) => (
                         <li key={index}>
-                            <input type="checkbox" name={size.designation} id={size.designation} className="options_checkbox"/>
+                            <input type="checkbox" name={size.designation} id={size.designation}
+                                   className="options_checkbox" onChange={selectHandler}/>
                             <label htmlFor={size.designation}>{size.designation.toUpperCase()}</label>
                         </li>
                     ))}

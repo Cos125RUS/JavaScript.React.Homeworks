@@ -6,7 +6,7 @@ import CatalogPagination from "./elements/CatalogPagination";
 
 const CatalogMain = () => {
     const {category} = useParams();
-    const categoryName = category ? category : "men";
+    const categoryName = category ? category : "man";
     const {pageNumber} = useParams();
     const currentPage = pageNumber ? parseInt(pageNumber, 10) : 1;
     // Заглушка для количества страниц

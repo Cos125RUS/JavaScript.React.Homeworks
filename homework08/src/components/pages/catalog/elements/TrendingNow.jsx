@@ -1,5 +1,18 @@
+import {useLocation, useNavigate} from "react-router-dom";
 
 const TrendingNow = ({trendingNow}) => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const selectHandler = (e) => {
+        let search = '';
+        if (location.search) {
+            search = location.search + `&year=${e.target.id}`;
+        } else {
+            search = `?year=${e.target.id}`;
+        }
+        navigate(location.pathname+`${search}`);
+    }
 
     return (
         <details
@@ -13,7 +26,7 @@ const TrendingNow = ({trendingNow}) => {
                     {trendingNow && trendingNow.map((item, i) => (
                         <li key={i}>
                             <input type="checkbox" name="new" id={item.name}
-                                   className="options_checkbox"/>
+                                   className="options_checkbox" onChange={selectHandler}/>
                             <label htmlFor={item.name}>{item.name}</label>
                         </li>
                     ))}

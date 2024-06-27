@@ -15,7 +15,7 @@ const CatalogPagination = ({totalPages, currentPage = 1, category}) => {
                 </Link>
                 <div className="catalog_page__nav__box__pages">
                     {Array.from({ length: showCount }, ((_, i) => (
-                        <Link key={i} to={`/catalog/page/${i + currentPage}`}
+                        <Link key={i} to={`/catalog/${category}/${i + currentPage}`}
                               className={"catalog_page__nav__box__pages__page " +
                                   ((i + currentPage) !== (showCount + currentPage - 1) ? "page_gap " : "") +
                                   ((i + currentPage) === currentPage ? "active_page" : "")}>

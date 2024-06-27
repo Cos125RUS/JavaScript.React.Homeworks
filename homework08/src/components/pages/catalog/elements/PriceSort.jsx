@@ -1,6 +1,18 @@
+import {useLocation, useNavigate} from "react-router-dom";
 
 const PriceSort = ({price}) => {
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    const selectHandler = (e) => {
+        let search = '';
+        if (location.search) {
+            search = location.search + `&price=${e.target.id}`;
+        } else {
+            search = `?price=${e.target.id}`;
+        }
+        navigate(location.pathname+`${search}`);
+    }
     return (
         <details
             className="info__box__options__box__option catalog_page__filter_sort__box__options__all_options__option">
@@ -12,8 +24,9 @@ const PriceSort = ({price}) => {
                 <ol>
                     {price && price.map((price) => (
                         <li key={price.id}>
-                            <input type="checkbox" name={"price1" + price.id} id={"price1" + price.id} className="options_checkbox"/>
-                            <label htmlFor={"price1" + price.id}>{price.designation}</label>
+                            <input type="checkbox" name={"price" + price.id} id={"price" + price.id}
+                                   className="options_checkbox" onChange={selectHandler}/>
+                            <label htmlFor={"price" + price.id}>{price.designation}</label>
                         </li>
                     ))}
                 </ol>
