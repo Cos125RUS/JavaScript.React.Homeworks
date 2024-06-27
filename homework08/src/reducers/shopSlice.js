@@ -17,7 +17,17 @@ const shopSlice = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            state.cart.push(action.payload);
+            if (state.cart.filter(product => product.id === action.payload.id).length > 0) {
+                state.cart.filter(product => product.id === action.payload.id)[0].count += 1;
+            } else {
+                state.cart.push({...action.payload, count: 1});
+            }
+        },
+        changeCount: (state, action) => {
+            state.cart.filter(product => product.id === action.payload.id)[0].count = action.payload.count;
+        },
+        deleteFromCart: (state, action) => {
+            state.cart.splice(state.cart.indexOf(state.cart.filter(product => product.id === action.payload.id)[0]), 1)
         }
     },
     extraReducers: (builder) => {
@@ -40,5 +50,5 @@ const shopSlice = createSlice({
     }
 });
 
-export const {addToCart} = shopSlice.actions;
+export const {addToCart, changeCount, deleteFromCart} = shopSlice.actions;
 export default shopSlice.reducer;
