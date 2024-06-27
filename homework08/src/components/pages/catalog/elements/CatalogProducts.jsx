@@ -1,22 +1,21 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import catalogProductLoader from "../../../../reducers/loaders/catalogProductLoader";
 import Product from "../../other/Product";
-import CatalogProductItem from "./CatalogProductItem";
+import productsLoader from "../../../../reducers/loaders/productsLoader";
 
-const CatalogProducts = () => {
-    const products = useSelector(state => state.catalogProducts);
+const CatalogProducts = ({category}) => {
+    const products = useSelector(state => state.products);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(catalogProductLoader());
+        dispatch(productsLoader());
     }, []);
 
     return (
         <div className="catalog_page__list">
             <div className="product__items">
-                {products.map((product, index) => (
-                    <CatalogProductItem key={product.id} product={product}/>
+                {products.filter(product => product.category === category).map((product, index) => (
+                    <Product key={product.id} product={product}/>
                 ))}
             </div>
         </div>

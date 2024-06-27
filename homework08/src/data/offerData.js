@@ -1,28 +1,32 @@
 export const offerData = {
     offers: [
         {
-            background: "1",
-            rectangle: "rectangle_small",
+            background: "img/offer/1.jpg",
+            rectangle: "img/offer/rectangle_small.png",
             tagline: "30% OFF",
-            category: "FOR WOMEN"
+            category: "FOR WOMEN",
+            link: "women"
         },
         {
-            background: "2",
-            rectangle: "rectangle_small",
+            background: "img/offer/2.jpg",
+            rectangle: "img/offer/rectangle_small.png",
             tagline: "HOT DEAL",
-            category: "FOR MEN"
+            category: "FOR MEN",
+            link: "men"
         },
         {
-            background: "3",
-            rectangle: "rectangle_small",
+            background: "img/offer/3.jpg",
+            rectangle: "img/offer/rectangle_small.png",
             tagline: "NEW ARRIVALS",
-            category: "FOR KIDS"
+            category: "FOR KIDS",
+            link: "kids"
         },
         {
-            background: "4",
-            rectangle: "rectangle_big",
+            background: "img/offer/4.jpg",
+            rectangle: "img/offer/rectangle_big.png",
             tagline: "LUXIROUS & TRENDY",
-            category: "ACCESORIES"
+            category: "ACCESORIES",
+            link: "accesories"
         }
     ]
 }

@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 
 const SubNav = ({crumbs}) => {
+    console.log(crumbs);
 
     return (
         <section className="sub_nav">

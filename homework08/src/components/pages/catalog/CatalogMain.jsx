@@ -5,6 +5,8 @@ import CatalogProducts from "./elements/CatalogProducts";
 import CatalogPagination from "./elements/CatalogPagination";
 
 const CatalogMain = () => {
+    const {category} = useParams();
+    const categoryName = category ? category : "men";
     const {pageNumber} = useParams();
     const currentPage = pageNumber ? parseInt(pageNumber, 10) : 1;
     // Заглушка для количества страниц
@@ -12,11 +14,11 @@ const CatalogMain = () => {
 
     return (
         <main className="main">
-            <SubNav crumbs={[{name: "home", link: "/"}, {name: "men", link: "/catalog"}, {name: "new arrivals"}]}/>
+            <SubNav crumbs={[{name: "home", link: "/"}, {name: categoryName, link: `/catalog/${categoryName}`}, {name: "new arrivals"}]}/>
             <section className="catalog_page center">
                 <FilterSort/>
-                <CatalogProducts/>
-                <CatalogPagination currentPage={currentPage} totalPages={totalPage}/>
+                <CatalogProducts category={categoryName}/>
+                <CatalogPagination currentPage={currentPage} totalPages={totalPage} category={categoryName}/>
             </section>
         </main>
     );

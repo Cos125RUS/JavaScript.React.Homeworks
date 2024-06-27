@@ -18,7 +18,7 @@ const ProductBox = () => {
             <div className="product__content center">
                 <ProductTop/>
                 <div className="product__items">
-                    {products.map((product, index) => (
+                    {products.slice(0, 6).map((product, index) => (
                         <Product key={product.id} product={product}/>
                     ))}
                 </div>
