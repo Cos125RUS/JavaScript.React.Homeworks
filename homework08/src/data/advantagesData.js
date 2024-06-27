@@ -1,7 +1,7 @@
 
 export const advantagesData = [
     {
-      img: "1.svg",
+      img: "/img/advantagees/1.svg",
       title: "Free Delivery",
       description: [
           "Worldwide delivery on all. Authorit tively morph",
@@ -9,7 +9,7 @@ export const advantagesData = [
       ],
     },
     {
-        img: "2.svg",
+        img: "/img/advantagees/2.svg",
         title: "Sales & discounts",
         description: [
             "Worldwide delivery on all. Authorit tively morph",
@@ -17,7 +17,7 @@ export const advantagesData = [
         ],
     },
     {
-        img: "3.svg",
+        img: "/img/advantagees/3.svg",
         title: "Quality assurance",
         description: [
             "Worldwide delivery on all. Authorit tively morph",

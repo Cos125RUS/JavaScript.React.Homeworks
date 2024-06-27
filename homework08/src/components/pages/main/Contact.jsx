@@ -7,7 +7,7 @@ const Contact = () => {
             <div className="contact__content center">
                 <div className="manager">
                     <div className="manager__items">
-                        <img src="img/contact/face.png" alt="face"/>
+                        <img src="/img/contact/face.png" alt="face"/>
                             <p>“Vestibulum quis porttitor dui! Quisque viverra nunc mi, a pulvinar purus condimentum“
                             </p>
                     </div>

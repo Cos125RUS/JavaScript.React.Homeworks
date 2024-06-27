@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 
 const SubNav = ({crumbs}) => {
-    console.log(crumbs);
 
     return (
         <section className="sub_nav">
@@ -17,8 +16,9 @@ const SubNav = ({crumbs}) => {
                                     crumbs[i].name.toUpperCase()
                                 }</Link></li>
                         ))}
-                        <li className="sub_nav__content__right__breadcrumb__item_link active" aria-current="page"><Link
-                            to="#">{crumbs[crumbs.length - 1].name.toUpperCase()}</Link></li>
+                        <li className="sub_nav__content__right__breadcrumb__item_link active" aria-current="page">
+                            <Link to="#">{crumbs[crumbs.length - 1].name.toUpperCase()}</Link>
+                        </li>
                     </ol>
                 </nav>}
             </div>

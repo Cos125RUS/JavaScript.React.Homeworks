@@ -16,7 +16,7 @@ const Advantages = () => {
             {advantages.map((advantage, index) => (
                 <article key={index} className="advantage">
                     <Link to="#" className="advantage__link">
-                        <img src={`img/advantagees/${advantage.img}`} alt="icon" className="advantage_img"/>
+                        <img src={advantage.img} alt="icon" className="advantage_img"/>
                         <h3>{advantage.title}</h3>
                         <p>{advantage.description[0]}<br/>{advantage.description[1]}</p>
                     </Link>

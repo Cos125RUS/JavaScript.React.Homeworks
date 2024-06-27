@@ -19,7 +19,7 @@ const FilterDropdown = ({filterData}) => {
                             <details open={filterCategory.isOpen}>
                                 <summary
                                     className="catalog_page__filter_sort__box__filter__menu__category__subcategory">
-                                    <img src="img/catalog/line.svg" alt="line"/>
+                                    <img src="/img/catalog/line.svg" alt="line"/>
                                     <span>{filterCategory.name.toUpperCase()}</span>
                                 </summary>
                                 <ol>

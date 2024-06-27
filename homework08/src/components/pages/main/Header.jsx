@@ -13,8 +13,9 @@ const Header = () => {
                     <div className="header__bg">
                         <nav className="menu center">
                             <div className="menu__left">
-                                <Link to="/" className="menu__link"><img src="img/header/icon.svg" alt="logo"
-                                                                         className="menu__img"/></Link>
+                                <Link to="/" className="menu__link">
+                                    <img src="/img/header/icon.svg" alt="logo" className="menu__img"/>
+                                </Link>
                                 <SearchHeader/>
                             </div>
                             <div className="menu__right">
