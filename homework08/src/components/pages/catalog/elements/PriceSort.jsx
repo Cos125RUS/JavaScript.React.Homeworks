@@ -1,22 +1,14 @@
 import {useLocation, useNavigate} from "react-router-dom";
+import addSearch from "../../../../modules/funcs/addSearch";
 
 const PriceSort = ({price}) => {
     const location = useLocation();
     const navigate = useNavigate();
 
     const selectHandler = (e) => {
-        if (e.target.checked) {
-            let search = '';
-            if (location.search) {
-                search = location.search + `&price=${e.target.id}`;
-            } else {
-                search = `?price=${e.target.id}`;
-            }
-            navigate(location.pathname + `${search}`);
-        } else {
-            console.log("off");
-        }
+        addSearch(navigate, location, e.target, "price");
     }
+
     return (
         <details
             className="info__box__options__box__option catalog_page__filter_sort__box__options__all_options__option">

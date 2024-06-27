@@ -1,21 +1,12 @@
 import {useLocation, useNavigate} from "react-router-dom";
+import addSearch from "../../../../modules/funcs/addSearch";
 
 const TrendingNow = ({trendingNow}) => {
     const location = useLocation();
     const navigate = useNavigate();
 
     const selectHandler = (e) => {
-        const query = new URLSearchParams(location.search);
-        if (e.target.checked) {
-            query.append("year", e.target.id);
-            if (location.search) {
-                navigate(location.pathname + location.search + `&year=${query.getAll("year")}`);
-            } else {
-                navigate(location.pathname + `?year=${query.getAll("year")}`);
-            }
-        } else {
-
-        }
+        addSearch(navigate, location, e.target, "year");
     }
 
     return (
