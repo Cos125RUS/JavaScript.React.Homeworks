@@ -5,13 +5,17 @@ const SizeSort = ({size}) => {
     const navigate = useNavigate();
 
     const selectHandler = (e) => {
-        let search = '';
-        if (location.search) {
-            search = location.search + `&size=${e.target.id}`;
+        if (e.target.checked) {
+            let search = '';
+            if (location.search) {
+                search = location.search + `&size=${e.target.id}`;
+            } else {
+                search = `?size=${e.target.id}`;
+            }
+            navigate(location.pathname + `${search}`);
         } else {
-            search = `?size=${e.target.id}`;
+            console.log("off");
         }
-        navigate(location.pathname+`${search}`);
     }
     return (
         <details

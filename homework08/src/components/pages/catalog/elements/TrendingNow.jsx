@@ -5,13 +5,17 @@ const TrendingNow = ({trendingNow}) => {
     const navigate = useNavigate();
 
     const selectHandler = (e) => {
-        let search = '';
-        if (location.search) {
-            search = location.search + `&year=${e.target.id}`;
+        const query = new URLSearchParams(location.search);
+        if (e.target.checked) {
+            query.append("year", e.target.id);
+            if (location.search) {
+                navigate(location.pathname + location.search + `&year=${query.getAll("year")}`);
+            } else {
+                navigate(location.pathname + `?year=${query.getAll("year")}`);
+            }
         } else {
-            search = `?year=${e.target.id}`;
+
         }
-        navigate(location.pathname+`${search}`);
     }
 
     return (

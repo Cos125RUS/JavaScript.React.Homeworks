@@ -5,13 +5,17 @@ const PriceSort = ({price}) => {
     const navigate = useNavigate();
 
     const selectHandler = (e) => {
-        let search = '';
-        if (location.search) {
-            search = location.search + `&price=${e.target.id}`;
+        if (e.target.checked) {
+            let search = '';
+            if (location.search) {
+                search = location.search + `&price=${e.target.id}`;
+            } else {
+                search = `?price=${e.target.id}`;
+            }
+            navigate(location.pathname + `${search}`);
         } else {
-            search = `?price=${e.target.id}`;
+            console.log("off");
         }
-        navigate(location.pathname+`${search}`);
     }
     return (
         <details
