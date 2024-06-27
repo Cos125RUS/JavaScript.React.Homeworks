@@ -14,7 +14,7 @@ const ProductOffer = () => {
     return (
         <section className="product">
             <div className="product__items">
-                {products.slice(3).map((product) => (
+                {products.slice(0, 3).map((product) => (
                     <Product key={product.id} product={product}/>
                 ))}
             </div>

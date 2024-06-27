@@ -8,7 +8,7 @@ const ProductMain = () => {
     
     return (
         <main className="main">
-            <SubNav crumbs={[{name: "home", link: "/"}, {name: "women", link: "/catalog"}, {name: "new arrivals"}]}/>
+            <SubNav crumbs={[{name: "home", link: "/"}, {name: "woman", link: "/catalog/woman"}, {name: "new arrivals"}]}/>
             <ProductCarousel/>
             <ProductInfo product={{
                 collection: "WOMEN COLLECTION",

@@ -9,7 +9,6 @@ import {catalogLoader} from "../../../../reducers/loaders/catalogLoader";
  * @constructor
  */
 const DropdownNav = () => {
-    // const [catalog, setCatalog] = useState([]);
     const catalog = useSelector(state => state.catalog);
     const dispatch = useDispatch();
 

@@ -10,7 +10,7 @@ const AddToCart = ({product}) => {
 
     return (
         <button onClick={addToCartHandler} className="product__button">
-            <img src="img/products/cart.svg" alt="cart"/>
+            <img src="/img/products/cart.svg" alt="cart"/>
             Add to Cart
         </button>
     );
