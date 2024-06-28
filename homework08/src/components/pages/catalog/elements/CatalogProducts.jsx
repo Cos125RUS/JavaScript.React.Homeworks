@@ -26,26 +26,10 @@ const CatalogProducts = ({category}) => {
     return (
         <div className="catalog_page__list">
             <div className="product__items">
-                {products.filter(product => ((product.category === category)
-                ))
-                    .filter(product => {
-                        if (!year) {
-                            return product;
-                        } else if (product.year === parseInt(year)) {
-                            return product;
-                        }
-                    })
-                    .filter(product => {
-                        if (!size) {
-                            return product;
-                        } else if (product.size.indexOf(size))
-                            return product;
-                    })
-                    // .filter(product => {
-                    //     if (!price) {
-                    //         return product;
-                    //     }
-                    // })
+                {products
+                    .filter(product => ((product.category === category)))
+                    .filter(product => (!year || product.year === parseInt(year)))
+                    .filter(product => (!size || product.size.indexOf(size)))
                     .map((product, index) => (
                         <Product key={product.id} product={product}/>
                     ))}
