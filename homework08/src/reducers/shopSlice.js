@@ -40,6 +40,7 @@ const shopSlice = createSlice({
     extraReducers: (builder) => {
         //Фоновая загрузка отображаемых на сайте данных
         builder
+            //Загрузка элементов каталога
             .addCase(catalogLoader.pending, (state) => {
                 state.loadingStatus.catalog = true;
             })
@@ -47,6 +48,10 @@ const shopSlice = createSlice({
                 state.catalog = payload;
                 state.loadingStatus.catalog = false;
             })
+            .addCase(catalogLoader.rejected, (state, {payload}) => {
+                state.loadingStatus.catalog = false;
+            })
+            //Загрузка предложений
             .addCase(offerLoader.pending, (state) => {
                 state.loadingStatus.offers = true;
             })
@@ -54,6 +59,10 @@ const shopSlice = createSlice({
                 state.offers = payload;
                 state.loadingStatus.offers = false;
             })
+            .addCase(offerLoader.rejected, (state, {payload}) => {
+                state.loadingStatus.offers = false;
+            })
+            //Загрузка продуктов
             .addCase(productsLoader.pending, (state) => {
                 state.loadingStatus.products = true;
             })
@@ -61,6 +70,10 @@ const shopSlice = createSlice({
                 state.products = payload;
                 state.loadingStatus.products = false;
             })
+            .addCase(productsLoader.rejected, (state, {payload}) => {
+                state.loadingStatus.products = false;
+            })
+            //Загрузка саморекламы
             .addCase(advantagesLoader.pending, (state) => {
                 state.loadingStatus.advantages = true;
             })
@@ -68,11 +81,18 @@ const shopSlice = createSlice({
                 state.advantages = payload;
                 state.loadingStatus.advantages = false;
             })
+            .addCase(advantagesLoader.rejected, (state, {payload}) => {
+                state.loadingStatus.advantages = false;
+            })
+            //Загрузка фильтров товаров
             .addCase(filterLoader.pending, (state) => {
                 state.loadingStatus.filter = true;
             })
             .addCase(filterLoader.fulfilled, (state, {payload}) => {
                 state.filter = payload;
+                state.loadingStatus.filter = false;
+            })
+            .addCase(filterLoader.rejected, (state, {payload}) => {
                 state.loadingStatus.filter = false;
             })
     }
