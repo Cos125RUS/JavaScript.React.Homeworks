@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import OfferBox from "./elements/OfferBox";
 import ProductBox from "./elements/ProductBox";
 

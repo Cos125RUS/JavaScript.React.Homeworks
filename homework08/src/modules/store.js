@@ -1,8 +1,13 @@
 import {configureStore} from "@reduxjs/toolkit";
-import shopReducer from "../reducers/shopSlice";
+import persistedReducer from "../reducers/persistReducer";
 
 const store = configureStore({
-    reducer: shopReducer
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: {
+            ignoreActions: ['persist/PERSIST']
+        }
+    })
 });
 
 export default store;

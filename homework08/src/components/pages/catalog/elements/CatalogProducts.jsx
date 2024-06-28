@@ -3,8 +3,6 @@ import {useEffect, useState} from "react";
 import Product from "../../other/Product";
 import productsLoader from "../../../../reducers/loaders/productsLoader";
 import {useLocation} from "react-router-dom";
-import {logDOM} from "@testing-library/react";
-import product from "../../other/Product";
 
 const CatalogProducts = ({category}) => {
     const products = useSelector(state => state.products);
