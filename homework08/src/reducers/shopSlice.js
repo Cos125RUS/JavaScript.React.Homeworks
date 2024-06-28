@@ -31,6 +31,7 @@ const shopSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
+        //Фоновая загрузка отображаемых на сайте данных
         builder
             .addCase(catalogLoader.fulfilled, (state, {payload}) => {
                 state.catalog = payload;
