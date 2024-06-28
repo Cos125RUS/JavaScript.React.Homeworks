@@ -1,7 +1,7 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import addSearch from "../../../../modules/funcs/addSearch";
 
-const TrendingNow = ({trendingNow}) => {
+const TrendingNow = ({trendingNow, loadingStatus}) => {
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const TrendingNow = ({trendingNow}) => {
                 className="catalog_page__filter_sort__box__options__all_options__option__list trending_now_frame"
                 action="#">
                 <ol>
-                    {trendingNow && trendingNow.map((item, i) => (
+                    {loadingStatus ? <li>loading...</li> : trendingNow && trendingNow.map((item, i) => (
                         <li key={i}>
                             <input type="checkbox" name="new" id={item.name}
                                    className="options_checkbox" onChange={selectHandler}/>

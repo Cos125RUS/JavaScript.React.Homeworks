@@ -14,6 +14,13 @@ const shopSlice = createSlice({
         products: [],
         advantages: [],
         filter: {},
+        loadingStatus: {
+            catalog: false,
+            offers: false,
+            products: false,
+            advantages: false,
+            filter: false,
+        }
     },
     reducers: {
         addToCart: (state, action) => {
@@ -33,20 +40,40 @@ const shopSlice = createSlice({
     extraReducers: (builder) => {
         //Фоновая загрузка отображаемых на сайте данных
         builder
+            .addCase(catalogLoader.pending, (state) => {
+                state.loadingStatus.catalog = true;
+            })
             .addCase(catalogLoader.fulfilled, (state, {payload}) => {
                 state.catalog = payload;
+                state.loadingStatus.catalog = false;
+            })
+            .addCase(offerLoader.pending, (state) => {
+                state.loadingStatus.offers = true;
             })
             .addCase(offerLoader.fulfilled, (state, {payload}) => {
                 state.offers = payload;
+                state.loadingStatus.offers = false;
+            })
+            .addCase(productsLoader.pending, (state) => {
+                state.loadingStatus.products = true;
             })
             .addCase(productsLoader.fulfilled, (state, {payload}) => {
                 state.products = payload;
+                state.loadingStatus.products = false;
+            })
+            .addCase(advantagesLoader.pending, (state) => {
+                state.loadingStatus.advantages = true;
             })
             .addCase(advantagesLoader.fulfilled, (state, {payload}) => {
                 state.advantages = payload;
+                state.loadingStatus.advantages = false;
+            })
+            .addCase(filterLoader.pending, (state) => {
+                state.loadingStatus.filter = true;
             })
             .addCase(filterLoader.fulfilled, (state, {payload}) => {
                 state.filter = payload;
+                state.loadingStatus.filter = false;
             })
     }
 });

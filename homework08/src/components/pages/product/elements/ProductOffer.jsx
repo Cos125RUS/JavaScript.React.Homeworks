@@ -5,6 +5,7 @@ import Product from "../../other/Product";
 
 const ProductOffer = () => {
     const products = useSelector(state => state.products);
+    const loadingStatus = useSelector(state => state.loadingStatus.products);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -14,7 +15,7 @@ const ProductOffer = () => {
     return (
         <section className="product">
             <div className="product__items">
-                {products.slice(0, 3).map((product) => (
+                {loadingStatus ? <h5>loading...</h5> : products.slice(0, 3).map((product) => (
                     <Product key={product.id} product={product}/>
                 ))}
             </div>

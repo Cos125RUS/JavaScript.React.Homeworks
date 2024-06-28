@@ -1,7 +1,7 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import addSearch from "../../../../modules/funcs/addSearch";
 
-const SizeSort = ({size}) => {
+const SizeSort = ({size, loadingStatus}) => {
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const SizeSort = ({size}) => {
                 className="catalog_page__filter_sort__box__options__all_options__option__list size_frame"
                 action="#">
                 <ol>
-                    {size && size.map((size, index) => (
+                    {loadingStatus ? <li>loading...</li> : size && size.map((size, index) => (
                         <li key={index}>
                             <input type="checkbox" name={size.designation} id={size.designation}
                                    className="options_checkbox" onChange={selectHandler}/>

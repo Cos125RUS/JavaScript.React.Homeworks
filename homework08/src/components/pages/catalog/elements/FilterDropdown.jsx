@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-const FilterDropdown = ({filterData}) => {
+const FilterDropdown = ({filterData, loadingStatus}) => {
 
     return (
         <details className="catalog_page__filter_sort__box__filter">
@@ -14,7 +14,7 @@ const FilterDropdown = ({filterData}) => {
             </summary>
             <nav className="catalog_page__filter_sort__box__filter__menu">
                 <ol>
-                    {filterData && filterData.map((filterCategory, i) => (
+                    {loadingStatus ? <li>loading...</li> : filterData && filterData.map((filterCategory, i) => (
                         <li key={i} className="catalog_page__filter_sort__box__filter__menu__category">
                             <details open={filterCategory.isOpen}>
                                 <summary

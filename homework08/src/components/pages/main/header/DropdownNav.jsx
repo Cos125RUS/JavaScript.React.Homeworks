@@ -10,6 +10,7 @@ import {catalogLoader} from "../../../../reducers/loaders/catalogLoader";
  */
 const DropdownNav = () => {
     const catalog = useSelector(state => state.catalog);
+    const loadingStatus = useSelector(state => state.loadingStatus.catalog);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const DropdownNav = () => {
         <nav className="dropdown">
             <h5 className="dropdown__title">MENU</h5>
             <div className="catalog__categories">
-                {catalog.map((item, index) => (
+                {loadingStatus ? <h5>loading...</h5> : catalog.map((item, index) => (
                     <div key={index} className={"catalog__block"}>
                         <Link to={item.link}>
                             <h6 className="catalog__name">{item.name.toUpperCase()}</h6>

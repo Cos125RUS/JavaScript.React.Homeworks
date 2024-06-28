@@ -6,6 +6,7 @@ import {useLocation} from "react-router-dom";
 
 const CatalogProducts = ({category}) => {
     const products = useSelector(state => state.products);
+    const loadingStatus = useSelector(state => state.loadingStatus.products);
     const dispatch = useDispatch();
     const location = useLocation();
     const [year, setYear] = useState(null);
@@ -26,7 +27,7 @@ const CatalogProducts = ({category}) => {
     return (
         <div className="catalog_page__list">
             <div className="product__items">
-                {products
+                {loadingStatus ? <h5>loading...</h5> : products
                     .filter(product => ((product.category === category)))
                     .filter(product => (!year || year.indexOf(product.year) > -1))
                     .filter(product => (!size || product.size.filter(s => (size.indexOf(s) > -1)).length))

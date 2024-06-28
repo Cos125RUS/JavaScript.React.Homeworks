@@ -8,6 +8,7 @@ import PriceSort from "./PriceSort";
 
 const FilterSort = () => {
     const filterData = useSelector(state => state.filter);
+    const loadingStatus = useSelector(state => state.loadingStatus.filter);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -17,12 +18,12 @@ const FilterSort = () => {
     return (
         <div className="catalog_page__filter_sort">
             <div className="catalog_page__filter_sort__box">
-                <FilterDropdown filterData={filterData.dropdown}/>
+                <FilterDropdown filterData={filterData.dropdown} loadingStatus={loadingStatus}/>
                 <div className="catalog_page__filter_sort__box__options">
                     <div className="info__box__options__box catalog_page__filter_sort__box__options__all_options">
-                        <TrendingNow trendingNow={filterData.trendingNow}/>
-                        <SizeSort size={filterData.size}/>
-                        <PriceSort price={filterData.price}/>
+                        <TrendingNow trendingNow={filterData.trendingNow} loadingStatus={loadingStatus}/>
+                        <SizeSort size={filterData.size} loadingStatus={loadingStatus}/>
+                        <PriceSort price={filterData.price} loadingStatus={loadingStatus}/>
                     </div>
                 </div>
             </div>

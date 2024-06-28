@@ -7,6 +7,7 @@ import Product from "../../other/Product";
 
 const ProductBox = () => {
     const products = useSelector(state => state.products);
+    const loadingStatus = useSelector(state => state.loadingStatus.products);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const ProductBox = () => {
             <div className="product__content center">
                 <ProductTop/>
                 <div className="product__items">
-                    {products.slice(0, 6).map((product, index) => (
+                    {loadingStatus ? <h5>loading...</h5> : products.slice(0, 6).map((product, index) => (
                         <Product key={product.id} product={product}/>
                     ))}
                 </div>

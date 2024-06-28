@@ -5,6 +5,7 @@ import {offerLoader} from "../../../../reducers/loaders/offerLoader";
 
 const OfferBox = () => {
     const offers = useSelector(state => state.offers);
+    const loadingStatus = useSelector(state => state.loadingStatus.offers);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -14,7 +15,7 @@ const OfferBox = () => {
     return (
         <section className="offer">
             <div className="offer__content center">
-                {offers.map((offer, index) => (
+                {loadingStatus ? <h5>loading...</h5> : offers.map((offer, index) => (
                     <Offer key={index} data={offer}/>
                 ))}
             </div>
