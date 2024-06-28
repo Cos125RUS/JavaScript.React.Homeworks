@@ -2,7 +2,7 @@ export const catalogData = {
     categories: [
         {
             name: "man",
-            link: "catalog",
+            link: "catalog/man",
             subcategories: [
                 {name: 'Accessories', link: 'product'},
                 {name: 'Bags', link: 'product'},
@@ -12,7 +12,7 @@ export const catalogData = {
         },
         {
             name: "woman",
-            link: "catalog",
+            link: "catalog/woman",
             subcategories: [
                 {name: 'Accessories', link: 'product'},
                 {name: 'Jackets & Coats', link: 'product'},

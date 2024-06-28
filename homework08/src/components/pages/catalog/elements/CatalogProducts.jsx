@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import Product from "../../other/Product";
 import productsLoader from "../../../../reducers/loaders/productsLoader";
 import {useLocation} from "react-router-dom";
+import {logDOM} from "@testing-library/react";
+import product from "../../other/Product";
 
 const CatalogProducts = ({category}) => {
     const products = useSelector(state => state.products);
@@ -18,8 +20,8 @@ const CatalogProducts = ({category}) => {
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
-        setYear(query.get("year"));
-        setSize(query.get("size"));
+        setYear(query.get("year") ? query.get("year").split(",").map(year => parseInt(year, 10)) : null);
+        setSize(query.get("size") ? query.get("size").split(",") : null);
         setPrice(query.get("price"));
     }, [location]);
 
@@ -28,8 +30,9 @@ const CatalogProducts = ({category}) => {
             <div className="product__items">
                 {products
                     .filter(product => ((product.category === category)))
-                    .filter(product => (!year || product.year === parseInt(year)))
-                    .filter(product => (!size || product.size.indexOf(size)))
+                    .filter(product => (!year || year.indexOf(product.year) > -1))
+                    .filter(product => (!size || product.size.filter(s => (size.indexOf(s) > -1)).length))
+                    //TODO сортировка по цене
                     .map((product, index) => (
                         <Product key={product.id} product={product}/>
                     ))}
