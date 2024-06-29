@@ -3,10 +3,12 @@ import {useEffect, useState} from "react";
 import Product from "../../other/Product";
 import productsLoader from "../../../../reducers/loaders/productsLoader";
 import {useLocation} from "react-router-dom";
+import {catalogLoader} from "../../../../reducers/loaders/catalogLoader";
 
 const CatalogProducts = ({category}) => {
     const products = useSelector(state => state.products);
     const loadingStatus = useSelector(state => state.loadingStatus.products);
+    const loadingError = useSelector(state => state.loadingError.products);
     const dispatch = useDispatch();
     const location = useLocation();
     const [year, setYear] = useState(null);
@@ -16,6 +18,12 @@ const CatalogProducts = ({category}) => {
     useEffect(() => {
         dispatch(productsLoader());
     }, []);
+
+    useEffect(() => {
+        if (loadingError) {
+            dispatch(catalogLoader());
+        }
+    }, [loadingError]);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);

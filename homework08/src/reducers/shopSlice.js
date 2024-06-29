@@ -20,7 +20,14 @@ const shopSlice = createSlice({
             products: false,
             advantages: false,
             filter: false,
-        }
+        },
+        loadingError: {
+            catalog: false,
+            offers: false,
+            products: false,
+            advantages: false,
+            filter: false,
+        },
     },
     reducers: {
         addToCart: (state, action) => {
@@ -50,6 +57,7 @@ const shopSlice = createSlice({
             })
             .addCase(catalogLoader.rejected, (state, {payload}) => {
                 state.loadingStatus.catalog = false;
+                state.loadingError.catalog = true;
             })
             //Загрузка предложений
             .addCase(offerLoader.pending, (state) => {
@@ -61,6 +69,7 @@ const shopSlice = createSlice({
             })
             .addCase(offerLoader.rejected, (state, {payload}) => {
                 state.loadingStatus.offers = false;
+                state.loadingError.offers = true;
             })
             //Загрузка продуктов
             .addCase(productsLoader.pending, (state) => {
@@ -72,6 +81,7 @@ const shopSlice = createSlice({
             })
             .addCase(productsLoader.rejected, (state, {payload}) => {
                 state.loadingStatus.products = false;
+                state.loadingError.products = true;
             })
             //Загрузка саморекламы
             .addCase(advantagesLoader.pending, (state) => {
@@ -83,6 +93,7 @@ const shopSlice = createSlice({
             })
             .addCase(advantagesLoader.rejected, (state, {payload}) => {
                 state.loadingStatus.advantages = false;
+                state.loadingError.advantages = true;
             })
             //Загрузка фильтров товаров
             .addCase(filterLoader.pending, (state) => {
@@ -94,6 +105,7 @@ const shopSlice = createSlice({
             })
             .addCase(filterLoader.rejected, (state, {payload}) => {
                 state.loadingStatus.filter = false;
+                state.loadingError.filter = true;
             })
     }
 });

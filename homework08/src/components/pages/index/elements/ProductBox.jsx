@@ -4,15 +4,23 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import productsLoader from "../../../../reducers/loaders/productsLoader";
 import Product from "../../other/Product";
+import {catalogLoader} from "../../../../reducers/loaders/catalogLoader";
 
 const ProductBox = () => {
     const products = useSelector(state => state.products);
     const loadingStatus = useSelector(state => state.loadingStatus.products);
+    const loadingError = useSelector(state => state.loadingError.products);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(productsLoader());
     }, []);
+
+    useEffect(() => {
+        if (loadingError) {
+            dispatch(catalogLoader());
+        }
+    }, [loadingError]);
 
     return (
         <section className="products">

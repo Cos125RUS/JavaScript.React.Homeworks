@@ -11,11 +11,18 @@ import {catalogLoader} from "../../../../reducers/loaders/catalogLoader";
 const DropdownNav = () => {
     const catalog = useSelector(state => state.catalog);
     const loadingStatus = useSelector(state => state.loadingStatus.catalog);
+    const loadingError = useSelector(state => state.loadingError.catalog);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(catalogLoader());
     }, []);
+
+    useEffect(() => {
+        if (loadingError) {
+            dispatch(catalogLoader());
+        }
+    }, [loadingError]);
 
     return (
         <nav className="dropdown">

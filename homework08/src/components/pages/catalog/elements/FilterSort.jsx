@@ -5,15 +5,23 @@ import FilterDropdown from "./FilterDropdown";
 import TrendingNow from "./TrendingNow";
 import SizeSort from "./SizeSort";
 import PriceSort from "./PriceSort";
+import {catalogLoader} from "../../../../reducers/loaders/catalogLoader";
 
 const FilterSort = () => {
     const filterData = useSelector(state => state.filter);
     const loadingStatus = useSelector(state => state.loadingStatus.filter);
+    const loadingError = useSelector(state => state.loadingError.filter);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(filterLoader());
     }, []);
+
+    useEffect(() => {
+        if (loadingError) {
+            dispatch(catalogLoader());
+        }
+    }, [loadingError]);
 
     return (
         <div className="catalog_page__filter_sort">
